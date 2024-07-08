@@ -295,6 +295,17 @@ body.light .btn-cta:focus {
   box-shadow: #07070733 0 0 0 var(--gutter-nano);
 }
 
+body.dark .btn-cta:hover,
+body.dark .btn-cta:focus {
+  box-shadow: #ffffff40 0 0 0 var(--gutter-nano);
+}
+
+body .btn-cta.btn-disabled:hover,
+body .btn-cta.btn-disabled:focus {
+  cursor: auto;
+  box-shadow: unset !important;
+}
+
 .btn-secondary {
   border: 1px solid var(--border-dark);
   color: var(--important);
@@ -520,9 +531,20 @@ body.light .header {
   }
 }
 
-.header-btns {
+.language-switcher {
   display: inline-flex;
   gap: var(--gutter-x-small);
+}
+
+.language-switcher a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.language-switcher img {
+  width: 35px;
+  height: 30px;
 }
 
 @media (max-width: 400px) {
@@ -531,7 +553,7 @@ body.light .header {
     text-align: center;
     padding-inline: 0.6rem;
   }
-  .header-btns {
+  .language-switcher {
     flex-direction: column;
     width: 80%;
   }
