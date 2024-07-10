@@ -83,6 +83,12 @@ html {
   font-family: "Mona Sans", sans-serif;
   box-sizing: border-box;
   scroll-padding-top: var(--scroll-padding);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar { 
+  display: none; 
 }
 
 @media (max-width: 1200px) {
@@ -437,8 +443,8 @@ main {
   min-block-size: 100vh;
   position: fixed;
   width: 100%;
-  background-color: #ff5e99;
-  background-image: var(--gradient-brand);
+  background-color: #282828;
+  background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
   transition: 450ms var(--easing);
   z-index: 3;
 }
@@ -1040,7 +1046,6 @@ body.dark .work-links img {
 .hire-alert {
   display: inline-flex;
   align-items: center;
-  gap: var(--gutter-nano);
   font-size: initial;
   padding: var(--gutter-nano) var(--gutter-micro);
   border-radius: var(--gutter-small);
@@ -1048,6 +1053,12 @@ body.dark .work-links img {
   z-index: 1;
   margin-block-end: var(--gutter-small);
   color: var(--important);
+}
+
+.hire-alert a {
+  color: #279FDA;
+  text-decoration: none;
+  margin-left: 4px;
 }
 
 .hire-alert::before,
@@ -1076,6 +1087,7 @@ body.dark .work-links img {
   border-radius: 50%;
   background-color: red;
   animation: blink 550ms alternate infinite var(--easing);
+  margin-right: var(--gutter-nano);
 }
 
 @keyframes blink {
@@ -1089,7 +1101,7 @@ body.dark .work-links img {
 }
 
 .signatures {
-  inline-size: 150px;
+  inline-size: 250px;
 }
 
 body.light .signatures {
