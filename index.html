@@ -497,24 +497,18 @@
                 loading="lazy"
               />
             </div>
-            <form action="#" class="contact-form" netlify>
+            <form action="contact.php" method="POST" class="contact-form">
               <div class="form-field">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required />
+                <input type="text" name="name" id="name" required minlength="2" aria-required="true" placeholder="Your name" />
               </div>
               <div class="form-field">
                 <label for="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  inputmode="email"
-                />
+                <input type="email" name="email" id="email" required inputmode="email" aria-required="true" placeholder="Your email" />
               </div>
               <div class="form-field">
                 <label for="message">How can I help you?</label>
-                <textarea name="message" id="message" required></textarea>
+                <textarea name="message" id="message" required minlength="10" aria-required="true" placeholder="Your message"></textarea>
               </div>
               <button type="submit" class="btn btn-cta">Send</button>
             </form>

@@ -1,0 +1,5 @@
+# Ignore .htaccess
+.htaccess
+
+# Ignore contact.php
+contact.php
