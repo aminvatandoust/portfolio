@@ -326,11 +326,6 @@ body.light .btn-cta:focus {
   box-shadow: #07070733 0 0 0 var(--gutter-nano);
 }
 
-body.dark .btn-cta:hover,
-body.dark .btn-cta:focus {
-  box-shadow: #ffffff40 0 0 0 var(--gutter-nano);
-}
-
 body .btn-cta.btn-disabled:hover,
 body .btn-cta.btn-disabled:focus {
   cursor: auto;
@@ -345,6 +340,12 @@ body .btn-cta.btn-disabled:focus {
 .btn-secondary:hover,
 .btn-secondary:focus {
   border-color: var(--important);
+  box-shadow: #ffffff40 0 0 0 var(--gutter-nano);
+}
+
+body.light .btn-secondary:hover,
+body.light .btn-secondary:focus {
+  box-shadow: #07070733 0 0 0 var(--gutter-nano);
 }
 
 .link {
@@ -355,6 +356,11 @@ body .btn-cta.btn-disabled:focus {
   text-decoration: none;
   color: var(--important);
   position: relative;
+}
+
+.link.inline-link {
+  font-size: initial;
+  padding: 0;
 }
 
 .link::after,
