@@ -45,6 +45,17 @@
 
   --scroll-padding: 4.375rem;
   --radius: 85px;
+
+  --day: #397ab0;
+  --night: #1c202c;
+  --sun: #f2c426;
+  --moon: #c5c8cf;
+  --cloud-front: #fff;
+  --cloud-back: #a5c5dc;
+  --star: #fff;
+  --duration: 1s;
+  --easing-new: cubic-bezier(0.65, 0, 0.34, 1.17);
+  --easing-clouds: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 body.dark {
@@ -162,12 +173,22 @@ h3,
   text-align: center;
 }
 
+.h2 span {
+  display: block;
+  font-size: 17px;
+  margin-top: 8px;
+}
+
 .h3 {
   font-size: var(--h3);
 }
 
 .h4 {
   font-size: var(--h4);
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media (max-width: 845px) {
@@ -416,9 +437,15 @@ main {
   z-index: 4;
 }
 
+.menu-btn-container .container {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
 .menu-btn {
-  display: block;
-  margin-inline-start: auto;
+  display: inline-block;
   border: 1px solid var(--border-dark);
   inline-size: 132px;
   padding-block: var(--gutter-nano);
@@ -449,11 +476,16 @@ main {
   z-index: 3;
 }
 
+body.light .nav {
+  background-color: #b6b6b6;
+  background: radial-gradient(circle at 24.1% 68.8%, rgb(255 255 255) 0%, rgb(182 182 182) 99.4%);
+}
+
 .nav-items {
   position: absolute;
   top: 50%;
-  left: 15%;
-  transform: translateY(-50%) translateX(-15%);
+  left: 25%;
+  transform: translateY(-50%) translateX(-25%);
   list-style-type: none;
 }
 
@@ -468,6 +500,10 @@ main {
   color: #fff;
 }
 
+body.light .nav-item a {
+  color: #1a1a1a
+}
+
 .nav-item a::after {
   content: "";
   display: block;
@@ -477,6 +513,10 @@ main {
   transform-origin: left;
   background-color: white;
   transition: transform 250ms var(--easing);
+}
+
+body.light .nav-item a::after {
+  background-color: #1a1a1a
 }
 
 .nav-item a:hover::after,
@@ -515,6 +555,11 @@ body.light .header {
 
 .h1 span {
   display: block;
+}
+
+.header-textbox .sub {
+    font-size: 24px;
+    margin-top: 7px;
 }
 
 .header-text {
@@ -907,12 +952,12 @@ body.dark .work-links img {
 }
 
 /* --------------------------------- */
-/* ----- Testimonials -----*/
+/* ----- roadmaps -----*/
 /* --------------------------------- */
 
-.testimonials {
+.roadmaps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   margin-block-start: var(--gutter-x-large);
   list-style-type: none;
@@ -923,50 +968,54 @@ body.dark .work-links img {
 }
 
 @media (max-width: 1100px) {
-  .testimonials {
+  .roadmaps {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 645px) {
-  .testimonials {
+  .roadmaps {
     grid-template-columns: 1fr;
   }
 }
 
-.testimonial {
+.roadmap {
   display: flex;
   flex-direction: column;
   padding: var(--gutter-small);
   background-color: var(--bg-color-primary);
 }
 
-.testimonial-text {
+.roadmap-text {
   font-size: var(--text-small);
-  margin-block-end: var(--gutter-x-small);
 }
 
-.testimonial-author {
-  margin-block-start: auto;
+.roadmap-title {
+  margin-block-end: var(--gutter-x-small);
   display: flex;
   align-items: center;
   gap: var(--gutter-micro);
 }
 
-.testimonial-author-name {
+.roadmap-title-name {
   margin-block-end: 0.3rem;
 }
 
-.testimonial-author-name,
-.testimonial-author-job {
+.roadmap-title-name,
+.roadmap-title-sub {
   font-size: initial;
 }
 
-.testimonial-author > img {
+.roadmap-title > img {
   block-size: 52px;
   inline-size: 52px;
   border-radius: 50%;
   background-color: var(--bg-color-secondary);
+  box-shadow: rgb(255 255 255 / 58%) 0px 2px 4px, rgb(255 255 255 / 54%) -3px 5px 13px -3px, rgb(255 255 255 / 20%) 0px -3px 0px inset;
+}
+
+body.light .roadmap-title > img {
+  box-shadow: rgb(0 0 0 / 58%) 0px 2px 4px, rgb(0 0 0 / 54%) -3px 5px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 }
 
 /* --------------------------------- */
@@ -1058,7 +1107,6 @@ body.dark .work-links img {
 .hire-alert a {
   color: #279FDA;
   text-decoration: none;
-  margin-left: 4px;
 }
 
 .hire-alert::before,
@@ -1220,70 +1268,195 @@ body.dark .footer-link img {
   filter: invert(1);
 }
 
-.theme-switch {
-  /* Track */
-
-  --track-size: calc(var(--thumb-size) * 2);
-  --track-padding: 0.225rem;
-  --track-inactive: hsl(80 0% 80%);
-  --track-active: #d7aefb;
-
-  --track-color-inactive: var(--track-inactive);
-  --track-color-active: var(--track-active);
-
-  /* Thumb */
-
-  --thumb-position: 0%;
-  --thumb-size: 1.2rem;
-  --thumb: hsl(0 0% 100%);
-  --thumb-highlight: hsla(0, 0%, 0%, 0.056);
-
-  --thumb-color: var(--thumb);
-  --thumb-color-highlight: var(--thumb-highlight);
-}
-
-.theme-switch {
-  display: flex;
-  align-items: center;
-  gap: 2ch;
-  user-select: none;
+/* Light switch */
+.daynight {
   -webkit-tap-highlight-color: transparent;
-}
-
-.theme-switch > span,
-.theme-switch > input {
+  font-size: 0.48rem;
+  display: inline-block;
+  position: relative;
   cursor: pointer;
+  width: 120px;
+  height: 48px;
+  border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.theme-switch span {
-  font-size: 1rem;
-  color: var(--sub);
-}
-
-.theme-switch > input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+.daynight__checkbox {
   appearance: none;
-  box-sizing: content-box;
-  inline-size: var(--track-size);
-  block-size: var(--thumb-size);
-  padding: var(--track-padding);
-  background-color: var(--track-color-inactive);
-  border-radius: var(--track-size);
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: inset 0 2.4px 2.4px 0 rgba(0, 0, 0, 0.5), inset 0 -2.4px 4.8px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
-.theme-switch > input::after {
+.daynight__sky {
   display: block;
-  content: "";
-  inline-size: var(--thumb-size);
-  block-size: var(--thumb-size);
-  background-color: var(--thumb-color);
-  border-radius: 50%;
-  transform: translateX(var(--thumb-position));
-  transition: 500ms all cubic-bezier(0.45, 0.05, 0.22, 1.3);
+  width: 100%;
+  height: 100%;
+  padding: 4.8px;
+  box-sizing: border-box;
+  background-color: var(--day);
+  transition: background var(--duration) var(--easing-new);
+  isolation: isolate;
 }
 
-input:checked {
-  --thumb-position: 100%;
-  background-color: var(--track-active);
+.daynight__sky::before, .daynight__sky:after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  width: 43.2px;
+  height: 43.2px;
+  left: 147.36px;
+  top: 6.72px;
+  transition: var(--duration) var(--easing-new);
+  box-shadow: -48px 0 0 0 var(--cloud-front), -60.96px 12px 0 -4.8px var(--cloud-front), -79.2px 27.84px 0 0 var(--cloud-front), -96px 27.36px 0 -4.8px var(--cloud-front), -112.8px 24px 0 -5.76px var(--cloud-front), -134.4px 26.4px 0 -4.8px var(--cloud-front), -148.8px 36px 0 0 var(--cloud-front), 43.2px 4.8px 0 0 var(--cloud-front);
+  animation: clouds 10s infinite var(--easing-clouds);
+}
+
+.daynight__sky::before {
+  z-index: -1;
+  box-shadow: -50.4px -10.56px 0 0 var(--cloud-back), -72px 0 0 -9.6px var(--cloud-back), -84px 8.64px 0 -4.8px var(--cloud-back), -98.4px 22.08px 0 0 var(--cloud-back), -117.6px 20.16px 0 0 var(--cloud-back), -136.8px 27.84px 0 0 var(--cloud-back), -151.2px 31.2px 0 0 var(--cloud-back);
+  animation-delay: -5s;
+  animation-duration: 8s;
+}
+
+:checked ~ .daynight__sky {
+  background-color: var(--night);
+}
+
+:checked ~ .daynight__sky::before {
+  transform: translateY(62.4px);
+  opacity: 0;
+}
+
+:checked ~ .daynight__sky::after {
+  transform: translateY(48px);
+  opacity: 0;
+}
+
+.daynight__stars, .daynight__morestars {
+  transition: var(--duration) var(--easing-new);
+}
+
+.daynight__stars::before, .daynight__morestars::before, .daynight__stars::after, .daynight__morestars::after {
+  content: "✦";
+  position: absolute;
+  font-size: 6.48px;
+  color: var(--star);
+  opacity: 0;
+  transform: translateY(-72px);
+  transition: var(--duration) var(--easing-new);
+  animation: stars var(--stars-duration, 7s) var(--stars-delay, 0s) infinite;
+}
+
+:checked ~ * .daynight__stars, :checked ~ * .daynight__morestars {
+  opacity: 1;
+}
+
+:checked ~ * .daynight__stars::before, :checked ~ * .daynight__morestars::before, :checked ~ * .daynight__stars::after, :checked ~ * .daynight__morestars::after {
+  transform: translateY(0);
+}
+
+.daynight__stars::before {
+  left: 18.24px;
+  top: 3.84px;
+  text-shadow: 29.28px 5.28px;
+}
+
+.daynight__stars::after {
+  font-size: 4.8px;
+  left: 52.8px;
+  top: 32.64px;
+  --stars-duration: 9.1s;
+  --stars-delay: -2.8s;
+}
+
+.daynight__morestars::before {
+  font-size: 2.88px;
+  left: 23.52px;
+  top: 24.96px;
+  text-shadow: 21.6px 9.12px, 62.88px -3.84px, 80.64px 21.12px, 21.6px 41.76px;
+  --stars-duration: 5.6s;
+  --stars-delay: -7s;
+}
+
+.daynight__morestars::after {
+  font-size: 1.92px;
+  left: 38.4px;
+  top: 94.08px;
+  text-shadow: 7.2px -10.08px, 80.16px -33.12px;
+  --stars-duration: 11.2s;
+  --stars-delay: -1.4s;
+}
+
+.daynight__sunmoon, .daynight__sunmoon::before {
+  content: "";
+  overflow: hidden;
+  display: block;
+  position: relative;
+  width: 38.4px;
+  height: 38.4px;
+  border-radius: 50%;
+  transition: transform var(--duration) var(--easing-new);
+  background-color: var(--sun);
+  box-shadow: 1.92px 1.92px 2.4px 0.48px rgba(0, 0, 0, 0.3), inset -0.96px -0.96px 2.4px 0 rgba(0, 0, 0, 0.4), inset 0.96px 0.96px 2.4px 0 #fffeff, 0 0 0 48px rgba(255, 255, 255, 0.07), 0 0 0 31.2px rgba(255, 255, 255, 0.07), 0 0 0 14.4px rgba(255, 255, 255, 0.07);
+}
+
+.daynight__sunmoon::before {
+  box-shadow: 1.92px 1.92px 2.4px 0.48px rgba(0, 0, 0, 0.3), inset -0.96px -0.96px 2.4px 0 rgba(0, 0, 0, 0.4), inset 0.96px 0.96px 2.4px 0 #fffeff;
+  background: radial-gradient(circle, #969db0 5.28px, #798090 6.24px, rgba(129, 136, 153, 0) 6.72px), radial-gradient(circle, #969db0 2.4px, #798090 3.36px, rgba(129, 136, 153, 0) 3.84px), radial-gradient(circle, #969db0 2.4px, #798090 3.36px, rgba(129, 136, 153, 0) 3.84px);
+  background-position: -5.76px 3.36px, 0 -9.6px, 9.6px 6.72px;
+  background-color: var(--moon);
+  transform: translateX(50.4px) rotate(50deg);
+  animation: moon 25s infinite linear;
+}
+
+:checked ~ * .daynight__sunmoon {
+  transform: translateX(72px);
+}
+
+:checked ~ * .daynight__sunmoon::before {
+  transform: translateX(0) rotate(0);
+}
+
+@keyframes stars {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes clouds {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes moon {
+  to {
+    background-position: 32.64px 3.36px, 38.4px -9.6px, 48px 6.72px;
+  }
 }

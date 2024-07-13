@@ -23,7 +23,6 @@
     <meta name="twitter:title" content="Amin Vatandoust's Portfolio">
     <meta name="twitter:description" content="I am Amin Vatandoust also knows as d0Run, a UI/UX Designer and a Frontend Developer.">
     <meta name="twitter:image" content="assets/images/sharing.png">
-    <!-- TODO: change the favicon -->
     <link
       rel="shortcut icon"
       href="assets/images/favicon.png"
@@ -58,18 +57,26 @@
 
       <div class="menu-btn-container">
         <div class="container">
-          <button type="button"  class="menu-btn">menu</button>
+          <label class="daynight theme-switch" for="theme-switch">
+            <input type="checkbox" class="daynight__checkbox" id="theme-switch" role="switch">
+            <span class="daynight__sky">
+              <span class="daynight__stars"></span>
+              <span class="daynight__morestars"></span>
+              <span class="daynight__sunmoon"></span>
+            </span>
+          </label>
+          <button type="button" class="menu-btn">menu</button>
         </div>
       </div>
 
       <nav class="nav hidden">
         <ol class="nav-items">
           <li class="nav-item"><a href="#">Home</a></li>
+          <li class="nav-item"><a href="#about">About me</a></li>
+          <li class="nav-item"><a href="#skills">Skills</a></li>
           <li class="nav-item"><a href="#work">My Work</a></li>
-          <li class="nav-item"><a href="#skills">My Skills</a></li>
-          <li class="nav-item">
-            <a href="#contact" data-focused="last-focused">Contact</a>
-          </li>
+          <li class="nav-item"><a href="#blog">My Articles</a></li>
+          <li class="nav-item"><a href="#contact" data-focused="last-focused">Contact</a></li>
         </ol>
       </nav>
 
@@ -77,7 +84,7 @@
         <div class="header-textbox">
           <h1 class="h1">
             <span>Hi, I'm Amin Vatandoust</span>
-            <span>AKA d0Run</span>
+            <span class="sub">AKA d0Run</span>
           </h1>
 
           <p class="header-text">
@@ -94,6 +101,89 @@
     </header>
 
     <main>
+      <section class="about">
+        <div class="container">
+            <h2 class="h2" id="about">
+              About Me
+              <span>roadmap</span>
+            </h2>
+              <ol class="roadmaps">
+                <li class="roadmap">
+                  <figure class="roadmap-title">
+                    <img
+                      src="/assets/images/favicon.png"
+                      alt="Know Me More"
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      <h3 class="roadmap-title-name">1. Know Me More</h3>
+                      <p class="roadmap-title-sub">but why?</p>
+                    </figcaption>
+                  </figure>
+                  <blockquote class="roadmap-text">
+                    I'm Amin, 24 years old. I was born in Torbat-e Heydariyeh and raised in Birjand, Iran. Started my Computer journey using my brother's PC to learn the basics in Windows 98. I always try to be independent and that's probably my boldest feature.
+                    <br><br>
+                    Back in high school, I found my passion and started working in that field. After graduating, I decided to dive straight into my career instead of going to university or college.
+                  </blockquote>
+                </li>
+                <li class="roadmap">
+                  <figure class="roadmap-title">
+                    <img
+                      src="assets/images/about/work.png"
+                      alt="Work"
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      <h3 class="roadmap-title-name">2. Career</h3>
+                      <p class="roadmap-title-sub">interesting</p>
+                    </figcaption>
+                  </figure>
+                  <blockquote class="roadmap-text">
+                    Back in 2016, I began working as a content creator at a download website, which marked my first encounter with WordPress. During that time, I was also involved in creating an e-commerce for a friend and learning about PrestaShop.
+                    <br><br>
+                    In July 2017, I ventured into learning web development and secured an internship at Fasleaval. I eventually landed a permanent position there, and three years later, I was promoted to the role of Chief Operating Officer. Simultaneously, I also took on a role as a front-end developer at Gruccia.
+                  </blockquote>
+                </li>
+                <li class="roadmap">
+                  <figure class="roadmap-title">
+                    <img
+                      src="assets/images/about/hobby.png"
+                      alt="My Hobbies"
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      <h3 class="roadmap-title-name">3. My Hobbies</h3>
+                      <p class="roadmap-title-sub">yes, I took this moon photo</p>
+                    </figcaption>
+                  </figure>
+                  <blockquote class="roadmap-text">
+                    I love exploring the world through traveling, backpacking, and hiking. Capturing these adventures with photography is a passion of mine. Most of my photos are taken with my phone and Samsung WB350F.
+                    <br><br>
+                    When I’m not outdoors, I enjoy playing video games (that's where I got "d0Run" from) and listening to different genres of music. I'm also trying to become a gym rat.
+                  </blockquote>
+                </li>
+                <li class="roadmap">
+                  <figure class="roadmap-title">
+                    <img
+                      src="assets/images/about/future.png"
+                      alt="Future Plans"
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      <h3 class="roadmap-title-name">4. Future Plans</h3>
+                      <p class="roadmap-title-sub">oooh, now we talking</p>
+                    </figcaption>
+                  </figure>
+                  <blockquote class="roadmap-text">
+                    In the near future, I can’t wait to embark on adventures across Iran, exploring its beautiful cities. I’m also excited about visiting a few other countries to meet new people.
+                    <br><br>
+                    On the work front, I’m eager to dive into the world of programming, learning new languages and mastering back-end development. I’m looking forward to the challenges and opportunities ahead!
+                  </blockquote>
+                </li>
+              </ol>
+        </div>
+      </section>
+
       <section class="client">
         <div class="container">
           <h2 class="h2">My Toolkit</h2>
@@ -162,6 +252,19 @@
                 class="logo hide to-bottom"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills">
+        <div class="container">
+          <h2 class="h2" id="skills">My Toolkit</h2>
+          <div class="skills-imgs">
+                <img src="assets/images/skills/react.webp" alt="React" class="skills-img" loading="lazy" title="React">
+                 <img src="assets/images/skills/shell.webp" alt="Shell" class="skills-img" loading="lazy" title="Shell">
+                 <img src="assets/images/skills/git.webp" alt="Git" class="skills-img" loading="lazy" title="Git">
+                 <img src="assets/images/skills/html.webp" alt="CSS" class="skills-img" loading="lazy" title="CSS">
+                 <img src="assets/images/skills/js.webp" alt="JavaScript" class="skills-img" loading="lazy" title="JavaScript">
           </div>
         </div>
       </section>
@@ -285,6 +388,7 @@
           </div>
         </div>
       </section>
+
       <section class="article">
         <div class="container">
           <h2 class="h2" id="blog">My Articles</h2>
@@ -370,137 +474,6 @@
         </div>
       </section>
 
-      <section class="skills">
-        <div class="container">
-          <h2 class="h2" id="skills">My Toolkit</h2>
-          <div class="skills-imgs">
-                <img src="assets/images/skills/react.webp" alt="React" class="skills-img" loading="lazy" title="React">
-                 <img src="assets/images/skills/shell.webp" alt="Shell" class="skills-img" loading="lazy" title="Shell">
-                 <img src="assets/images/skills/git.webp" alt="Git" class="skills-img" loading="lazy" title="Git">
-                 <img src="assets/images/skills/html.webp" alt="CSS" class="skills-img" loading="lazy" title="CSS">
-                 <img src="assets/images/skills/js.webp" alt="JavaScript" class="skills-img" loading="lazy" title="JavaScript">
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="h2">Testimonials</h2>
-        <div class="container">
-          <ol class="testimonials">
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-                Working with Syed was a great experience. His drive for clean aesthetics and his open communication style helped us collaborate closely on the solution.
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/rich-harris.png"
-                  alt="Rich Harris"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">Harris Kareem</h3>
-                  <p class="testimonial-author-job">Developer @Outlets</p>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-                Syed is a fantastic UI/UX designer and developer with a keen sense for marketing, and lead generation. He's the only designer I know who also has a deep understanding for code and front-end development.
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/frank-mcsherry.webp"
-                  alt="Andrew Mead"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">
-                   Andrew Mead
-                  </h3>
-                  <p class="testimonial-author-job">Chief Scientist @Logos
-                  </p>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-             
-                Talented artist, experienced with various
-                media and can make any project you are working on look good. He is
-                easy to work with and is a self starter. I would work with Syed
-                again.
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/brian-hirsh.png"
-                  alt="Brian Hirsh"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">Brian Hirsh</h3>
-                  <p class="testimonial-author-job">Head @Zero-in</p>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-                Syed is a true professional with amazing talent. He is a creative
-                thinker, has his finger on the pulse of whats to come, and
-                absolutely one of the quickest and best problem solvers I have
-                ever met.
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/adam.png"
-                  alt="Adam Argalye"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">Adam Argalye</h3>
-                  <p class="testimonial-author-job">SWE @Google</p>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-               Syed is one of my favourite people to work with. He's my go-to colleague when trouble shooting any new technique or technology because she understands how to tackle unknown problems with gumption. 
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/val-head.png"
-                  alt="Val Head"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">Val Head</h3>
-                  <p class="testimonial-author-job">CEO @Engines</p>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="testimonial">
-              <blockquote class="testimonial-text">
-                Syed is a talented artist. He is very experienced with various
-                media and can make any project you are working on look good. He is
-                easy to work with and is a self starter. I would work with Syed
-                again.
-              </blockquote>
-              <figure class="testimonial-author">
-                <img
-                  src="assets/images/testimonials/tim-satterwhite.webp"
-                  alt="Gary Simon"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <h3 class="testimonial-author-name">Gary Simon</h3>
-                  <p class="testimonial-author-job">A11y Advocate @W3C</p>
-                </figcaption>
-              </figure>
-            </li>
-          </ol>
-        </div>
-      </section>
-
       <section class="contact">
         <div class="container">
           <h2 class="h2" id="contact">Send Message</h2>
@@ -508,7 +481,7 @@
             <div class="contact-textbox">
               <strong href="#" class="hire-alert">
                 <span class="indicator"></span>
-                Urgent? text me on <a href="https://t.me/aminvtndoust" target="_blank" rel="noopener" alt="My Telegram">Telegram</a>
+                <p>Urgent? text me on <a href="https://t.me/aminvtndoust" target="_blank" rel="noopener" alt="My Telegram">Telegram</a></p>
               </strong>
               <p class="contact-text">
                 Hey there! Just wanted to let you know that I'm more of a texter than a caller because I'm an introvert.
@@ -553,6 +526,9 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
+          <p class="footer-text">
+            © <span>2024</span> - Designed by devsyedmohsin ❤️ Customized by <a href="https://aminvtndoust.com">Amin Vatandoust</a>.
+          </p>
           <nav>
             <ol class="footer-links">
               <li class="footer-link">
@@ -589,13 +565,6 @@
               </li>
             </ol>
           </nav>
-          <p class="footer-text">
-            ❤️ <span>2024</span> - Designed by devsyedmohsin & Customized by <a href="https://aminvtndoust.com">Amin Vatandoust</a>.
-          </p>
-          <label class="theme-switch" for="theme-switch">
-            <span>Dark Theme</span>
-            <input type="checkbox" id="theme-switch" role="switch"/>
-          </label>
         </div>
       </div>
     </footer>
