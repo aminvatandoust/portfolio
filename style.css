@@ -191,6 +191,10 @@ h3,
   text-align: center;
 }
 
+.d-inline {
+  display: inline-block;
+}
+
 @media (max-width: 845px) {
   :root {
     --h1: 2.845rem;
@@ -682,7 +686,7 @@ body.light .logo {
 }
 
 /* --------------------------------- */
-/* ----- Work -----*/
+/* ----- Certifications -----*/
 /* --------------------------------- */
 
 .work-boxes {
@@ -930,7 +934,8 @@ body.dark .work-links img {
   flex-basis: 44%;
 }
 
-.featured-article h3 {
+.featured-article h3,
+.article-box h3 {
   margin-block-start: var(--gutter-x-small);
 }
 
