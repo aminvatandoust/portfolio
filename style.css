@@ -599,13 +599,17 @@ body.light .header {
 
 .language-switcher a {
   display: flex;
-  gap: 8px;
   align-items: center;
 }
 
 .language-switcher img {
   width: 35px;
   height: 30px;
+  margin-right: 8px;
+}
+
+body.light .language-switcher svg {
+  filter: invert(1);
 }
 
 @media (max-width: 400px) {
@@ -838,32 +842,6 @@ body.light .work-img {
   margin-block-end: var(--gutter-x-small);
 }
 
-.work-links {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gutter-x-small);
-}
-
-.work-links img {
-  block-size: 28px;
-  inline-size: 28px;
-}
-
-body.dark .work-links img {
-  filter: invert(1);
-}
-
-/* Github icon */
-
-.work-links > a:last-child {
-  transition: 0.3s transform ease-in;
-}
-
-.work-links > a:last-child:hover,
-.work-links > a:last-child:focus {
-  transform: scale(1.1);
-}
-
 .work-text,
 .contact-text,
 .work-technologies {
@@ -872,8 +850,7 @@ body.dark .work-links img {
 
 .work-textbox h3,
 .work-text,
-.work-technologies,
-.work-links {
+.work-technologies {
   --delay: 0.2s;
   animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-play-state: paused;
@@ -885,10 +862,6 @@ body.dark .work-links img {
 
 .work-technologies {
   animation-delay: calc(var(--delay) * 1.5);
-}
-
-.work-links {
-  animation-delay: calc(var(--delay) * 2);
 }
 
 @keyframes slide-up {
