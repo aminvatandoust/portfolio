@@ -90,6 +90,10 @@ body.light {
   box-sizing: inherit;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html {
   font-family: "Mona Sans", sans-serif;
   box-sizing: border-box;
@@ -361,6 +365,12 @@ body.light .btn-secondary:focus {
 .link.inline-link {
   font-size: initial;
   padding: 0;
+}
+
+@media (max-width: 645px) {
+  .link.inline-link {
+    font-size: var(--text-small);
+  }
 }
 
 .link::after,
