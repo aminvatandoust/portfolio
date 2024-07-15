@@ -549,12 +549,12 @@ body.light .nav-item a::after {
 
 body.dark .header {
   background-image: linear-gradient(#0000008b, #000000e6),
-    url("assets/images/hero-bg.jpg");
+    url("assets/images/hero-bg.webp");
 }
 
 body.light .header {
   background-image: linear-gradient(#ffffffa2, #ffffffe6),
-    url("assets/images/hero-bg.jpg");
+    url("assets/images/hero-bg.webp");
 }
 
 .header-textbox {
@@ -621,74 +621,105 @@ body.light .header {
 }
 
 /* --------------------------------- */
-/* ----- Clients -----*/
+/* ----- Skills -----*/
 /* --------------------------------- */
 
-.logos {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding-block-start: var(--gutter-x-large);
+.category {
+  margin-bottom: 40px;
+  padding-block-start: var(--gutter-small);
 }
 
-@media (max-width: 885px) {
-  .logos {
-    padding-block-start: calc(
-      var(--gutter-x-large) + var(--gutter-x-large) - 2rem
-    );
-  }
+.category h3 {
+  margin-bottom: 20px;
+  font-size: 1.75rem;
+  color: var(--important);
 }
 
-.logo-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.category h3::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #767676;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.item {
+  text-align: center;
+  padding: 25px;
+  border-radius: 15px;
+  background: #292929;
+  transition: all 0.8s ease;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px 0px rgb(255 255 255 / 15%);
   position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.logo {
+body.light .item {
+  background: #ffffff;
+  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 15%);
+}
+
+.item.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.item img {
+  transition: all 0.4s;
+  margin: 0 auto 15px;
+  width: 100px;
+  border-radius: 12px;
+}
+
+.item span {
+  display: block;
+  font-size: 1rem;
+  color: var(--body);
+}
+
+.item::before {
+  content: '';
   position: absolute;
   top: 0;
-  max-block-size: 60px;
-  max-inline-size: 150px;
-  transition: all 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(0 0 0 / 60%), rgba(0, 123, 255, 0));
+  transition: left 0.4s;
+  z-index: 0;
 }
 
-@media (max-width: 845px) {
-  .logo {
-    max-inline-size: 100px;
+body.light .item::before {
+  background: linear-gradient(90deg, rgb(218 218 218 / 60%), rgba(0, 123, 255, 0));
+}
+
+.item:hover img {
+    transform: scale(1.1);
+}
+
+.item:hover::before {
+    left: 0;
+}
+
+@media (max-width: 633px) {
+    .items {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .full-width {
+      grid-column: span 2;
+      width: 100%;
   }
-
-  .logo-group:last-child {
-    display: none;
-  }
-}
-
-@media (max-width: 400px) {
-  .logo {
-    max-inline-size: 85px;
-  }
-}
-
-.logo.hide {
-  opacity: 0;
-}
-
-.logo.to-top {
-  transform: scale(0.4) translateY(-150px);
-}
-
-.logo.to-bottom {
-  transform: scale(0.4) translateY(150px);
-}
-
-body.dark .logo {
-  filter: invert(97%) grayscale(100%) opacity(0.6);
-}
-
-body.light .logo {
-  filter: grayscale(100%) opacity(0.6);
 }
 
 /* --------------------------------- */
@@ -1030,54 +1061,6 @@ body.light .roadmap-title > img {
 }
 
 /* --------------------------------- */
-/* ----- Skills -----*/
-/* --------------------------------- */
-
-.skills-imgs {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: var(--gutter-x-large);
-  padding-block-start: var(--gutter-x-large);
-}
-
-.skills-img {
-  block-size: 135px;
-  inline-size: 135px;
-}
-
-@media (max-width: 1100px) {
-  .skills-img {
-    block-size: 100px;
-    inline-size: 100px;
-  }
-}
-
-@media (max-width: 810px) {
-  .skills-img {
-    block-size: 85px;
-    inline-size: 85px;
-  }
-}
-
-@media (max-width: 675px) {
-  .skills-imgs {
-    gap: var(--gutter-large);
-  }
-  .skills-img {
-    block-size: 70px;
-    inline-size: 70px;
-  }
-}
-
-@media (max-width: 340px) {
-  .skills-img {
-    block-size: 55px;
-    inline-size: 55px;
-  }
-}
-
-/* --------------------------------- */
 /* ----- Contact -----*/
 /* --------------------------------- */
 
@@ -1279,7 +1262,10 @@ body.dark .footer-link img {
   filter: invert(1);
 }
 
-/* Light switch */
+/* --------------------------------- */
+/* ----- Light switch -----*/
+/* --------------------------------- */
+
 .daynight {
   -webkit-tap-highlight-color: transparent;
   font-size: 0.48rem;
