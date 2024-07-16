@@ -11,6 +11,15 @@
   font-stretch: 75% 125%;
 }
 
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('assets/fonts/Vazirmatn[wght].woff2') format('woff2 supports variations'),
+      url('assets/fonts/Vazirmatn[wght].woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --h1: 3.5rem;
   --h2: 3rem;
@@ -95,11 +104,18 @@ body.light {
 }
 
 html {
-  font-family: "Mona Sans", sans-serif;
   box-sizing: border-box;
   scroll-padding-top: var(--scroll-padding);
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+html[dir="ltr"] {
+  font-family: "Mona Sans", sans-serif;
+}
+
+html[dir="rtl"] {
+  font-family: "Vazirmatn", sans-serif;
 }
 
 html::-webkit-scrollbar { 
@@ -504,9 +520,17 @@ body.light .nav {
 .nav-items {
   position: absolute;
   top: 50%;
+  list-style-type: none;
+}
+
+html[dir="ltr"] .nav-items {
   left: 25%;
   transform: translateY(-50%) translateX(-25%);
-  list-style-type: none;
+}
+
+html[dir="rtl"] .nav-items {
+  right: 25%;
+  transform: translateY(-50%) translateX(25%);
 }
 
 .nav-item:not(:last-child) {
@@ -530,9 +554,16 @@ body.light .nav-item a {
   block-size: var(--gutter-nano);
   width: 100%;
   transform: scale(0);
-  transform-origin: left;
   background-color: white;
   transition: transform 250ms var(--easing);
+}
+
+html[dir="ltr"] .nav-item a::after {
+  transform-origin: left;
+}
+
+html[dir="rtl"] .nav-item a::after {
+  transform-origin: right;
 }
 
 body.light .nav-item a::after {
@@ -557,14 +588,24 @@ body.light .nav-item a::after {
   position: relative;
 }
 
-body.dark .header {
+html[dir="ltr"] body.dark .header {
   background-image: linear-gradient(#0000008b, #000000e6),
     url("assets/images/hero-bg.webp");
 }
 
-body.light .header {
+html[dir="ltr"] body.light .header {
   background-image: linear-gradient(#ffffffa2, #ffffffe6),
     url("assets/images/hero-bg.webp");
+}
+
+html[dir="rtl"] body.dark .header {
+  background-image: linear-gradient(#0000008b, #000000e6),
+    url("assets/images/rtl-hero-bg.webp");
+}
+
+html[dir="rtl"] body.light .header {
+  background-image: linear-gradient(#ffffffa2, #ffffffe6),
+    url("assets/images/rtl-hero-bg.webp");
 }
 
 .header-textbox {
@@ -615,7 +656,14 @@ body.light .header {
 .language-switcher img {
   width: 35px;
   height: 30px;
+}
+
+html[dir="ltr"] .language-switcher img {
   margin-right: 8px;
+}
+
+html[dir="rtl"] .language-switcher img {
+  margin-left: 8px;
 }
 
 body.light .language-switcher svg {
@@ -1147,7 +1195,14 @@ body.light .roadmap-title > img {
   border-radius: 50%;
   background-color: red;
   animation: blink 550ms alternate infinite var(--easing);
+}
+
+html[dir="ltr"] .indicator {
   margin-right: var(--gutter-nano);
+}
+
+html[dir="rtl"] .indicator {
+  margin-left: var(--gutter-nano);
 }
 
 @keyframes blink {
@@ -1333,6 +1388,7 @@ body.dark .footer-link img {
   border-radius: 24px;
   overflow: hidden;
   isolation: isolate;
+  direction: ltr;
 }
 
 .daynight__checkbox {

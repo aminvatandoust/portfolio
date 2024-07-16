@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -92,7 +92,7 @@
               <span class="daynight__sunmoon"></span>
             </span>
           </label>
-          <button type="button" class="menu-btn">menu</button>
+          <button type="button" class="menu-btn" data-menu-text="menu" data-close-text="close">menu</button>
         </div>
       </div>
 
@@ -482,6 +482,7 @@
               />
             </div>
             <form action="contact.php" method="POST" class="contact-form" id="contactForm">
+              <input type="hidden" name="lang" value="en" />
               <div class="form-field">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" required minlength="2" placeholder="Your name" />
@@ -551,43 +552,53 @@
     <script>
       document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();
-
+    
         const formData = new FormData(this);
-
+        const language = formData.get('lang');
+    
         fetch('contact.php', {
           method: 'POST',
           body: formData
         })
-        .then(response => response.text())
+        .then(response => {
+          if (response.ok) {
+            return response.text();
+          }
+          throw new Error('Network response was not ok.');
+        })
         .then(data => {
           const messageDiv = document.getElementById('formMessage');
-          messageDiv.innerText = data;
-          
-          if (data.includes("Thank You")) {
-            messageDiv.className = 'success';
+          if (language === 'fa') {
+            messageDiv.innerText = 'تشکر! پیام شما ارسال شد.';
           } else {
-            messageDiv.className = 'error';
+            messageDiv.innerText = 'Thank You! Your message has been sent.';
           }
-          
+    
+          messageDiv.className = 'success';
           messageDiv.style.display = 'block';
-          
+    
           setTimeout(() => {
             messageDiv.style.display = 'none';
           }, 5000);
-          
+    
           document.getElementById('contactForm').reset();
         })
         .catch(error => {
           const messageDiv = document.getElementById('formMessage');
-          messageDiv.innerText = "Oops! Something went wrong.";
+          if (language === 'fa') {
+            messageDiv.innerText = 'اوه! مشکلی پیش آمد.';
+          } else {
+            messageDiv.innerText = 'Oops! Something went wrong.';
+          }
+    
           messageDiv.className = 'error';
           messageDiv.style.display = 'block';
-          
+    
           setTimeout(() => {
             messageDiv.style.display = 'none';
           }, 5000);
         });
       });
-    </script>
+    </script>    
   </body>
 </html>

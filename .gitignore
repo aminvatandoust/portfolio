@@ -3,3 +3,6 @@
 
 # Ignore contact.php
 contact.php
+
+# Ignore Persian version of contact.php
+/fa/contact.php
