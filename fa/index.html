@@ -566,7 +566,8 @@
           if (response.ok) {
             return response.text();
           }
-          throw new Error('Network response was not ok.');
+          // Capture the specific error message from the response
+          return response.text().then(errorText => { throw new Error(errorText); });
         })
         .then(data => {
           if (isDevelopment) console.log('Response data:', data);
@@ -589,11 +590,7 @@
         .catch(error => {
           if (isDevelopment) console.error('Error:', error);
           const messageDiv = document.getElementById('formMessage');
-          if (language === 'fa') {
-            messageDiv.innerText = 'اوه! مشکلی پیش آمد.';
-          } else {
-            messageDiv.innerText = 'Oops! Something went wrong.';
-          }
+          messageDiv.innerText = error.message; // Show specific error message
     
           messageDiv.className = 'error';
           messageDiv.style.display = 'block';
@@ -603,6 +600,6 @@
           }, 5000);
         });
       });
-    </script>       
+    </script>         
   </body>
 </html>
