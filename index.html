@@ -34,7 +34,7 @@
       crossorigin
     />
 
-    <link rel="stylesheet" href="style.css?1721045723"  />
+    <link rel="stylesheet" href="style.css?1721129588"  />
     <script src="script.js" defer></script>
 
     <link rel="alternate" hreflang="en" href="https://aminvtndoust.com">
@@ -550,23 +550,27 @@
       </div>
     </footer>
     <script>
+      const isDevelopment = false;
+    
       document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();
     
         const formData = new FormData(this);
         const language = formData.get('lang');
     
-        fetch('contact.php', {
+        fetch('/contact.php', {
           method: 'POST',
           body: formData
         })
         .then(response => {
+          if (isDevelopment) console.log('Response status:', response.status);
           if (response.ok) {
             return response.text();
           }
           throw new Error('Network response was not ok.');
         })
         .then(data => {
+          if (isDevelopment) console.log('Response data:', data);
           const messageDiv = document.getElementById('formMessage');
           if (language === 'fa') {
             messageDiv.innerText = 'تشکر! پیام شما ارسال شد.';
@@ -584,6 +588,7 @@
           document.getElementById('contactForm').reset();
         })
         .catch(error => {
+          if (isDevelopment) console.error('Error:', error);
           const messageDiv = document.getElementById('formMessage');
           if (language === 'fa') {
             messageDiv.innerText = 'اوه! مشکلی پیش آمد.';
@@ -599,6 +604,6 @@
           }, 5000);
         });
       });
-    </script>    
+    </script>
   </body>
 </html>
